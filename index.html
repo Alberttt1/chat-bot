@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Primary Meta -->
+    <title>My Custom React App</title>
+    <meta name="title" content="My Custom React App" />
+    <meta name="description" content="A modern React application with a custom layout and branding." />
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- Icons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Custom Base Style -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #2563eb, #1e293b);
+        color: #ffffff;
+        min-height: 100vh;
+      }
+
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .app-loading h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .app-loading p {
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+
+      .spinner {
+        margin-top: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      Aplikasi ini membutuhkan JavaScript untuk berjalan dengan baik.
+    </noscript>
+
+    <!-- Initial Loading Screen -->
+    <div id="root">
+      <div class="app-loading">
+        <h1>My Custom React App</h1>
+        <p>Loading application, please wait...</p>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!--
+      React will replace the content inside #root after build.
+      This layout ensures the app looks branded even before JS loads.
+    -->
+  </body>
+</html>
