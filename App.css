@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* BACKGROUND — Aurora Grid */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #e6f7ff;
+  background:
+    linear-gradient(120deg, rgba(0,255,200,0.12), transparent 40%),
+    linear-gradient(300deg, rgba(120,90,255,0.18), transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 0,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    #070b18;
+  background-size: 160% 160%, 160% 160%, auto;
+  animation: aurora 16s linear infinite;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%, 100% 50%, 0 0; }
+  50% { background-position: 100% 50%, 0% 50%, 0 0; }
+  100% { background-position: 0% 50%, 100% 50%, 0 0; }
+}
+
+/* LAYOUT */
+.container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.chat-box {
+  width: 420px;
+  height: 620px;
+  background: rgba(10, 14, 35, 0.88);
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* HEADER — Neon Bar */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  color: #a7ffeb;
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgba(0,255,200,0.25), rgba(120,90,255,0.25));
+  box-shadow: inset 0 0 18px rgba(0,255,200,0.25);
+  margin-bottom: 8px;
+}
+
+/* CHAT */
+.messages {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 4px 6px 0;
+}
+
+.empty {
+  text-align: center;
+  opacity: 0.55;
+  font-size: 13px;
+  margin-top: 24px;
+}
+
+/* BUBBLES */
+.bubble {
+  max-width: 78%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  line-height: 1.45;
+  font-size: 14px;
+  position: relative;
+}
+
+/* USER — Prism */
+.bubble.user {
+  align-self: flex-end;
+  color: #04121a;
+  background: linear-gradient(135deg, #7cfff4, #8f7cff);
+  box-shadow: 0 10px 26px rgba(140,120,255,0.45);
+}
+
+.bubble.user::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  bottom: 10px;
+  border-left: 8px solid #8f7cff;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* AI — Glass */
+.bubble.ai {
+  align-self: flex-start;
+  color: #c8e9ff;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(120,160,255,0.35);
+  box-shadow: 0 8px 22px rgba(0,160,255,0.25);
+}
+
+.bubble.ai::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  bottom: 10px;
+  border-right: 8px solid rgba(120,160,255,0.35);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* TYPING */
+.typing::after {
+  content: ' ▌';
+  animation: caret 0.9s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+/* INPUT */
+.input-area {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.input-area input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(5, 10, 30, 0.9);
+  color: #e6f7ff;
+  border: 1px solid rgba(120,160,255,0.35);
+  outline: none;
+}
+
+.input-area input::placeholder {
+  color: #9fb6ff;
+}
+
+.input-area input:focus {
+  box-shadow: 0 0 0 2px rgba(120,160,255,0.35);
+}
+
+.input-area button {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #7cfff4, #8f7cff);
+  color: #04121a;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.input-area button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(140,120,255,0.55);
+}
